@@ -1,0 +1,13 @@
+<%- |
+  String $pkg_path ,
+  String $os_path,
+  String $server,
+  String $key,
+| -%>
+#!/usr/bin/env bash
+
+set -e
+# deprecated
+curl -XPUT -H "x-api-token: <%= $key %>" https://<%= $server %><%= $os_path %> -d @/opt/keepup/data.json
+# actual
+curl -XPUT -H "x-api-token: <%= $key %>" https://<%= $server %><%= $pkg_path %> -d @/opt/keepup/pkg.json

@@ -1,0 +1,16 @@
+<%- |
+  Hash $data ,
+| -%>
+{
+  "packages": {
+    "debian": "<%= $data['version_id'] %>",
+    "mongodb": "<%= $data['mongodb'] %>",
+    "redis": "<%= $data['redis'] %>",
+    "mysql": "<%= $data['mysql'] %>",
+    "rabbitmq": "<%= $data['rabbitmq'] %>",
+    "memcached": "<%= $data['memcached'] %>",
+    "envoy": "<%= $data['envoy'] %>",
+    "host_ip": "<%= $data['host_ip'] %>",
+    "data_center": "<%= $data['data_center'] %>"
+  }
+}

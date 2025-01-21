@@ -1,0 +1,13 @@
+<%- |
+  Hash $data ,
+| -%>
+{
+  "release": {
+    "os_id": "<%= $data['os_id'] %>",
+    "version_codename": "<%= $data['version_codename'] %>",
+    "version": "<%= $data['version'] %>",
+    "version_id": "<%= $data['version_id'] %>",
+    "host_ip": "<%= $data['host_ip'] %>",
+    "data_center": "<%= $data['data_center'] %>"
+  }
+}

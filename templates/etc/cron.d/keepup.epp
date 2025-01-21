@@ -1,0 +1,8 @@
+<%- |
+  String $cron,
+| -%>
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=""
+
+# keepup
+ <%= $cron %> root bash /opt/keepup/run.sh
