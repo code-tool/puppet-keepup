@@ -27,6 +27,14 @@ packages = {
     host_package: 'envoy',
     host_version_command: "dpkg-query -W -f='\${Package} \${Version}\n' envoy 2>/dev/null || true",
   },
+  'postgresql' => {
+    host_package: 'postgresql', 
+    host_version_command: "psql --version 2>/dev/null | cut -d ' ' -f3 | sed 's/^/postgresql /' || true",
+  },
+  'elasticsearch' => {
+    host_package: 'elasticsearch',
+    host_version_command: "dpkg-query -W -f='${Package} ${Version}\n' elasticsearch 2>/dev/null || true",
+  },
 }
 
 def process_running?(package)
