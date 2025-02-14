@@ -32,6 +32,9 @@ class keepup::params {
     'rabbitmq'         => $facts['package_versions']['rabbitmq']['version'],
     'memcached'        => $facts['package_versions']['memcached']['version'],
     'envoy'            => $facts['package_versions']['envoy']['version'],
+    'postgresql'       => $facts['package_versions']['postgresql']['version'],
+    'elasticsearch'    => $facts['package_versions']['elasticsearch']['version'],
+
   }
 
   $info = {}
