@@ -1,6 +1,5 @@
 <%- |
-  String $pkg_path ,
-
+  String $pkg_path,
   String $server,
   String $key,
 | -%>
