@@ -3,10 +3,8 @@
 # This module installs and configures keepup
 #
 # === Parameters
-
 class keepup (
   String               $key              = $keepup::params::key,
-  String               $os_path          = $keepup::params::os_path,
   String               $pkg_path         = $keepup::params::pkg_path,
   String               $server           = $keepup::params::server,
   String               $cron             = $keepup::params::cron,
@@ -17,12 +15,10 @@ class keepup (
   Hash                 $info_defaults    = $keepup::params::info_defaults,
   Hash                 $package_defaults = $keepup::params::package_defaults,
   Hash                 $info             = $keepup::params::info,
+) inherits keepup::params {
+  contain keepup::install
+  contain keepup::config
 
-  ) inherits keepup::params {
-
-    contain keepup::install
-    contain keepup::config
-
-    Class['keepup::install'] ->
-    Class['keepup::config']
+  Class['keepup::install'] ->
+  Class['keepup::config']
 }

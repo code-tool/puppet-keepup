@@ -3,10 +3,8 @@
 # creates config files
 #
 class keepup::config {
-
   $key              = $keepup::key
   $pkg_path         = $keepup::pkg_path
-  $os_path          = $keepup::os_path
   $server           = $keepup::server
   $cron             = $keepup::cron
   $config_manage    = $keepup::config_manage
@@ -16,7 +14,6 @@ class keepup::config {
   $package_defaults = $keepup::package_defaults
 
   if $config_manage {
-
     if $use_defaults {
       $data = deep_merge($info_defaults, $package_defaults, $info)
     } else {
@@ -32,17 +29,11 @@ class keepup::config {
       owner  => 'root',
       group  => 'root',
       mode   => '0750',
-    }->
+    } ->
 
+    # ensure old data file is absent
     file { '/opt/keepup/data.json':
-      ensure  => file,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0640',
-      content => epp("${module_name}/opt/keepup/data.json.epp", {
-        data => $data,
-        }),
-      replace => true,
+      ensure  => 'absent',
     }
 
     file { '/opt/keepup/pkg.json':
@@ -51,8 +42,9 @@ class keepup::config {
       group   => 'root',
       mode    => '0640',
       content => epp("${module_name}/opt/keepup/pkg.json.epp", {
-        data => $data,
-        }),
+          data => $data,
+        }
+      ),
       replace => true,
     }
 
@@ -62,11 +54,11 @@ class keepup::config {
       group   => 'root',
       mode    => '0750',
       content => epp("${module_name}/opt/keepup/run.sh.epp", {
-        pkg_path => $pkg_path,
-        os_path  => $os_path,
-        server   => $server,
-        key      => $key,
-        }),
+          pkg_path => $pkg_path,
+          server   => $server,
+          key      => $key,
+        }
+      ),
     }
 
     file { '/etc/cron.d/keepup':
@@ -75,14 +67,12 @@ class keepup::config {
       group   => 'root',
       mode    => '0640',
       content => epp("${module_name}/etc/cron.d/keepup.epp", {
-        cron => $cron,
-        }),
+          cron => $cron,
+        }
+      ),
     }
-
   } else {
-
     $files = [
-      '/opt/keepup/data.json',
       '/opt/keepup/pkg.json',
       '/opt/keepup/run.sh',
       '/etc/cron.d/keepup',
@@ -90,6 +80,5 @@ class keepup::config {
     file { $files:
       ensure => 'absent',
     }
-
   }
 }

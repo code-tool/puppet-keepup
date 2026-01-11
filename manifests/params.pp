@@ -3,17 +3,16 @@
 # default parameters definition
 #
 class keepup::params {
-
   $key            = 'secret'
-  $os_path        = '/os-release'
   $pkg_path       = '/package-version'
   $server_name    = 'keepup.exampel.com'
   $cron           = '0 */3 * * *'
   $package_ensure = 'installed'
   $config_manage  = true
   $manage_package = false
-  $package_name   = [ 'curl' ]
+  $package_name   = ['curl']
   $use_defaults   = true
+
   # https://puppet.com/docs/puppet/7/core_facts.html#os
   $info_defaults = {
     'os_id'            => $facts['os']['distro']['id'],
@@ -34,9 +33,7 @@ class keepup::params {
     'envoy'            => $facts['package_versions']['envoy']['version'],
     'postgresql'       => $facts['package_versions']['postgresql']['version'],
     'elasticsearch'    => $facts['package_versions']['elasticsearch']['version'],
-
   }
 
   $info = {}
-
 }
