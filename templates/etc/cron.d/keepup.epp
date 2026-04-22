@@ -1,8 +1,8 @@
 <%- |
-  String $cron,
+  String $crontabtime,
 | -%>
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 MAILTO=""
 
 # keepup
-<%= $cron %> root bash /opt/keepup/run.sh
+<%= $crontabtime %> root bash /opt/keepup/run.sh

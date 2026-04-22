@@ -7,7 +7,7 @@ class keepup (
   String               $key              = $keepup::params::key,
   String               $pkg_path         = $keepup::params::pkg_path,
   String               $server           = $keepup::params::server,
-  String               $cron             = $keepup::params::cron,
+  String               $crontimetpl      = $keepup::params::crontimetpl,
   Boolean              $manage_package   = $keepup::params::manage_package,
   Array[String]        $package_name     = $keepup::params::package_name,
   Boolean              $config_manage    = $keepup::params::config_manage,

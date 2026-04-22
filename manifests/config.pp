@@ -6,7 +6,7 @@ class keepup::config {
   $key              = $keepup::key
   $pkg_path         = $keepup::pkg_path
   $server           = $keepup::server
-  $cron             = $keepup::cron
+  $crontimetpl      = $keepup::crontimetpl
   $config_manage    = $keepup::config_manage
   $use_defaults     = $keepup::use_defaults
   $info_defaults    = $keepup::info_defaults
@@ -61,13 +61,16 @@ class keepup::config {
       ),
     }
 
+    $persistent_random_minute = $facts['keepup_cron_random_minute']
+    # for example: 'RANDOM */3 * * *' will be replaced to rndomized persistent value
+    $crontabtime = regsubst($crontimetpl, 'RANDOM', "${persistent_random_minute}", 'G')
     file { '/etc/cron.d/keepup':
       ensure  => file,
       owner   => 'root',
       group   => 'root',
       mode    => '0640',
       content => epp("${module_name}/etc/cron.d/keepup.epp", {
-          cron => $cron,
+          crontabtime => $crontabtime,
         }
       ),
     }
