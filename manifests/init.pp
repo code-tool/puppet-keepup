@@ -12,6 +12,7 @@ class keepup (
   Array[String]        $package_name     = $keepup::params::package_name,
   Boolean              $config_manage    = $keepup::params::config_manage,
   Boolean              $use_defaults     = $keepup::params::use_defaults,
+  Boolean              $systemd_timer    = $keepup::params::systemd_timer,
   Hash                 $info_defaults    = $keepup::params::info_defaults,
   Hash                 $package_defaults = $keepup::params::package_defaults,
   Hash                 $info             = $keepup::params::info,
