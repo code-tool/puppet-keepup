@@ -13,6 +13,7 @@ class keepup::params {
   $manage_package = false
   $package_name   = ['curl']
   $use_defaults   = true
+  $systemd_timer  = false
 
   # https://puppet.com/docs/puppet/7/core_facts.html#os
   $info_defaults = {

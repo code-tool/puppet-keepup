@@ -1,0 +1,6 @@
+[Unit]
+Description=Send keepup package versions
+
+[Service]
+Type=oneshot
+ExecStart=/opt/keepup/run.sh
