@@ -1,9 +1,9 @@
 require 'fileutils'
 
-Facter.add('keepup_cron_random_minute') do
+Facter.add('keepup_random_minute') do
   setcode do
     directory_path = '/etc/puppetlabs/facter/facts.d'
-    file_path = "#{directory_path}/keepup_cron_random_minute.txt"
+    file_path = "#{directory_path}/keepup_random_minute.txt"
 
     # Ensure the directory exists, recursively
     FileUtils.mkdir_p(directory_path)
