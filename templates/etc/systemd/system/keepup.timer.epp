@@ -1,0 +1,13 @@
+<%- |
+  String $calendar,
+| -%>
+[Unit]
+Description=Run keepup periodically
+
+[Timer]
+OnCalendar=<%= $calendar %>
+Persistent=true
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target
