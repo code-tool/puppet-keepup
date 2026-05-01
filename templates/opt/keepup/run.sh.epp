@@ -6,4 +6,4 @@
 #!/usr/bin/env bash
 
 set -e
-curl -XPUT -H "x-api-token: <%= $key %>" https://<%= $server %><%= $pkg_path %> -d @/opt/keepup/pkg.json
+curl -s -XPUT -H "x-api-token: <%= $key %>" https://<%= $server %><%= $pkg_path %> -d @/opt/keepup/pkg.json
