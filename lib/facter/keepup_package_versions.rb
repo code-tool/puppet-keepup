@@ -35,6 +35,10 @@ packages = {
     host_package: 'elasticsearch',
     host_version_command: "dpkg-query -W -f='${Package} ${Version}\n' elasticsearch 2>/dev/null || true",
   },
+  'php' => {
+    host_package: 'php',
+    host_version_command: "php --version 2>/dev/null | head -n 1 | cut -d ' ' -f2 | sed 's/^/php /' || true",
+  },
 }
 
 def process_running?(package)
