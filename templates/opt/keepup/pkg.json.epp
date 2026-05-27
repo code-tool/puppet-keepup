@@ -17,4 +17,3 @@
     "data_center": "<%= $data['data_center'] %>"
   }
 }
-
