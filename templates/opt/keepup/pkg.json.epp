@@ -12,6 +12,7 @@
     "envoy": "<%= $data['envoy'] %>",
     "postgresql": "<%= $data['postgresql'] %>",
     "elasticsearch": "<%= $data['elasticsearch'] %>",
+    "php": "<%= $data['php'] %>",
     "host_ip": "<%= $data['host_ip'] %>",
     "data_center": "<%= $data['data_center'] %>"
   }
