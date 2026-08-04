@@ -23,6 +23,7 @@ class keepup::params {
     'version_id'       => $facts['os']['distro']['release']['major'],
     'host_ip'          => $facts['networking']['hostname'],
     'data_center'      => 'unknown',
+    'team'             => 'unknown',
   }
 
   $package_defaults = {

@@ -7,6 +7,7 @@ keepup::server: 'keepup.example.com'
 keepup::systemd_timer: false
 keepup::info:
   data_center: 'dc-01'
+  team: 'platform'
   # be sure of uniqueness of data_center+host_ip combination
   # host_ip: "%{facts.networking.fqdn}"
   # host_ip: "%{hiera('my_loc_ip')}"
