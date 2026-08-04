@@ -39,6 +39,11 @@ packages = {
     host_package: 'php',
     host_version_command: "php --version 2>/dev/null | head -n 1 | cut -d ' ' -f2 | sed 's/^/php /' || true",
   },
+  'linux' => {
+    host_package: 'linux-image-amd64',
+    always_check: true,
+    host_version_command: "dpkg-query -W -f='\${Package} \${Version}\n' linux-image-amd64 2>/dev/null || true",
+  },
 }
 
 def process_running?(package)
@@ -57,7 +62,7 @@ Facter.add('package_versions') do
   setcode do
     package_versions = {}
     packages.each do |package_name, config|
-      process_check = process_running?(config[:host_package] || package_name)
+      process_check = config[:always_check] || process_running?(config[:host_package] || package_name)
 
       if process_check
         version = package_version(config[:host_version_command])

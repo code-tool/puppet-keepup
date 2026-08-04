@@ -13,6 +13,7 @@
     "postgresql": "<%= $data['postgresql'] %>",
     "elasticsearch": "<%= $data['elasticsearch'] %>",
     "php": "<%= $data['php'] %>",
+    "linux": "<%= $data['linux'] %>",
     "host_ip": "<%= $data['host_ip'] %>",
     "data_center": "<%= $data['data_center'] %>"
   }

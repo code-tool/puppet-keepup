@@ -36,6 +36,7 @@ class keepup::params {
     'postgresql'       => $facts['package_versions']['postgresql']['version'],
     'elasticsearch'    => $facts['package_versions']['elasticsearch']['version'],
     'php'              => $facts['package_versions']['php']['version'],
+    'linux'            => $facts['package_versions']['linux']['version'],
   }
 
   $info = {}
