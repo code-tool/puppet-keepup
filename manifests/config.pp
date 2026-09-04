@@ -30,11 +30,12 @@ class keepup::config {
       owner  => 'root',
       group  => 'root',
       mode   => '0750',
-    } ->
+    }
 
     # ensure old data file is absent
     file { '/opt/keepup/data.json':
       ensure  => 'absent',
+      require => File['/opt/keepup'],
     }
 
     file { '/opt/keepup/pkg.json':
@@ -64,17 +65,19 @@ class keepup::config {
 
     $persistent_random_minute = $facts['keepup_random_minute']
     # for example: 'RANDOM */3 * * *' will be replaced to rndomized persistent value
+    # lint:ignore:only_variable_string
     $crontabtime = regsubst($crontimetpl, 'RANDOM', "${persistent_random_minute}", 'G')
+    # lint:endignore
     $systemd_calendar = "*-*-* 00/3:${persistent_random_minute}:00"
+
+    exec { 'keepup-systemd-daemon-reload':
+      command     => '/bin/systemctl daemon-reload',
+      refreshonly => true,
+    }
 
     if $systemd_timer {
       file { '/etc/cron.d/keepup':
         ensure => absent,
-      }
-
-      exec { 'keepup-systemd-daemon-reload':
-        command     => '/bin/systemctl daemon-reload',
-        refreshonly => true,
       }
 
       file { '/etc/systemd/system/keepup.service':
@@ -121,15 +124,7 @@ class keepup::config {
         onlyif  => '/bin/systemctl list-unit-files keepup.timer --no-legend | /bin/grep -q "^keepup.timer"',
       }
 
-      exec { 'keepup-systemd-daemon-reload':
-        command     => '/bin/systemctl daemon-reload',
-        refreshonly => true,
-      }
-
-      file { [
-          '/etc/systemd/system/keepup.service',
-          '/etc/systemd/system/keepup.timer',
-        ]:
+      file { ['/etc/systemd/system/keepup.service', '/etc/systemd/system/keepup.timer']:
         ensure  => absent,
         require => Exec['keepup-systemd-disable-timer'],
         notify  => Exec['keepup-systemd-daemon-reload'],

@@ -1,0 +1,18 @@
+{
+  "packages": {
+    "debian": "",
+    "mongodb": "",
+    "redis": "",
+    "mysql": "",
+    "rabbitmq": "",
+    "memcached": "",
+    "envoy": "",
+    "postgresql": "",
+    "elasticsearch": "",
+    "php": "",
+    "linux": "",
+    "host_ip": "",
+    "data_center": "",
+    "team": ""
+  }
+}

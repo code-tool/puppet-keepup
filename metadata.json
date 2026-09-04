@@ -1,30 +1,38 @@
 {
-  "name": "code_tool-keepup",
+  "name": "codetool-keepup",
   "version": "1.4.4",
   "author": "code_tool",
-  "license": "MIT",
   "summary": "Installs and configures keepup - a package version monitoring agent",
+  "license": "MIT",
   "source": "https://github.com/code-tool/puppet-keepup",
-  "issues_url": "https://github.com/code-tool/puppet-keepup/issues",
   "project_page": "https://github.com/code-tool/puppet-keepup",
+  "issues_url": "https://github.com/code-tool/puppet-keepup/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.25.0 < 10.0.0"
+      "version_requirement": ">= 4.25.0 < 11.0.0"
     },
     {
       "name": "puppetlabs/apt",
-      "version_requirement": ">= 6.0.0 < 10.0.0"
+      "version_requirement": ">= 6.0.0 < 12.0.0"
     }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": ["10", "11", "12", "13"]
+      "operatingsystemrelease": [
+        "11",
+        "12",
+        "13"
+      ]
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": ["20.04", "22.04", "24.04"]
+      "operatingsystemrelease": [
+        "22.04",
+        "24.04",
+        "26.04"
+      ]
     }
   ],
   "requirements": [
@@ -32,5 +40,8 @@
       "name": "puppet",
       "version_requirement": ">= 6.0.0 < 9.0.0"
     }
-  ]
+  ],
+  "pdk-version": "3.4.0",
+  "template-url": "pdk-default#3.4.0",
+  "template-ref": "tags/3.4.0-0-gd3cc13f"
 }

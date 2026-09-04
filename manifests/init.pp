@@ -3,6 +3,19 @@
 # This module installs and configures keepup
 #
 # === Parameters
+# @param key
+# @param pkg_path
+# @param server
+# @param crontimetpl
+# @param manage_package
+# @param package_name
+# @param config_manage
+# @param use_defaults
+# @param systemd_timer
+# @param info_defaults
+# @param package_defaults
+# @param info
+
 class keepup (
   String               $key              = $keepup::params::key,
   String               $pkg_path         = $keepup::params::pkg_path,
@@ -20,6 +33,6 @@ class keepup (
   contain keepup::install
   contain keepup::config
 
-  Class['keepup::install'] ->
-  Class['keepup::config']
+  Class['keepup::install']
+  -> Class['keepup::config']
 }

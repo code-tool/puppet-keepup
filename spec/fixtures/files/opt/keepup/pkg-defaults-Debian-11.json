@@ -1,0 +1,18 @@
+{
+  "packages": {
+    "debian": "11",
+    "mongodb": "0.0.0",
+    "redis": "0.0.0",
+    "mysql": "0.0.0",
+    "rabbitmq": "0.0.0",
+    "memcached": "0.0.0",
+    "envoy": "0.0.0",
+    "postgresql": "0.0.0",
+    "elasticsearch": "0.0.0",
+    "php": "0.0.0",
+    "linux": "0.0.0",
+    "host_ip": "foo",
+    "data_center": "unknown",
+    "team": "unknown"
+  }
+}

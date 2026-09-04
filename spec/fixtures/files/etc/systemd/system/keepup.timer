@@ -1,0 +1,10 @@
+[Unit]
+Description=Run keepup periodically
+
+[Timer]
+OnCalendar=*-*-* 00/3:30:00
+Persistent=true
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

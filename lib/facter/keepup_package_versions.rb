@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'facter'
+require 'English'
 
 packages = {
   'mongodb' => {
@@ -13,7 +14,7 @@ packages = {
   },
   'mysql' => {
     host_package: 'percona-server-server',
-    host_version_command: "dpkg-query -W -f='\${Package} \${Version}\n' percona-server-server 2>/dev/null || true",
+    host_version_command: "dpkg-query -W -f='\${Package} \${Version}\n' percona-server-server percona-xtradb-cluster-server 2>/dev/null || true",
   },
   'rabbitmq' => {
     host_package: 'rabbitmq-server',
@@ -28,7 +29,7 @@ packages = {
     host_version_command: "dpkg-query -W -f='\${Package} \${Version}\n' envoy 2>/dev/null || true",
   },
   'postgresql' => {
-    host_package: 'postgresql', 
+    host_package: 'postgresql',
     host_version_command: "psql --version 2>/dev/null | cut -d ' ' -f3 | sed 's/^/postgresql /' || true",
   },
   'elasticsearch' => {
@@ -52,7 +53,7 @@ end
 
 def package_version(command)
   output = Facter::Util::Resolution.exec(command)
-  return nil unless $?.success? && output
+  return nil unless $CHILD_STATUS.success? && output
 
   version = output.strip.split(' ')[1]
   version
@@ -66,13 +67,13 @@ Facter.add('package_versions') do
 
       if process_check
         version = package_version(config[:host_version_command])
-        if version
-          package_versions[package_name] = { 'version' => version }
-        else
-          package_versions[package_name] = { 'version' => 'unknown'}
-        end
+        package_versions[package_name] = if version
+                                           { 'version' => version }
+                                         else
+                                           { 'version' => 'unknown' }
+                                         end
       else
-        package_versions[package_name] = { 'version' => 'unknown'}
+        package_versions[package_name] = { 'version' => 'unknown' }
       end
     end
 

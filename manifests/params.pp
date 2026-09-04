@@ -5,7 +5,7 @@
 class keepup::params {
   $key            = 'secret'
   $pkg_path       = '/package-version'
-  $server_name    = 'keepup.exampel.com'
+  $server         = 'keepup.example.com'
   # will be replaced to randomized minute
   $crontimetpl    =  'RANDOM */3 * * *'
   $package_ensure = 'installed'

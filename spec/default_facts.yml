@@ -1,0 +1,32 @@
+# Use default_module_facts.yml for module specific facts.
+#
+# Facts specified here will override the values provided by rspec-puppet-facts.
+---
+networking:
+  ip: "172.16.254.254"
+  ip6: "FE80:0000:0000:0000:AAAA:AAAA:AAAA"
+  mac: "AA:AA:AA:AA:AA:AA"
+is_pe: false
+
+keepup_random_minute: 30
+package_versions:
+  mongodb:
+    version: 0.0.0
+  redis:
+    version: 0.0.0
+  mysql:
+    version: 0.0.0
+  rabbitmq:
+    version: 0.0.0
+  memcached:
+    version: 0.0.0
+  envoy:
+    version: 0.0.0
+  postgresql:
+    version: 0.0.0
+  elasticsearch:
+    version: 0.0.0
+  php:
+    version: 0.0.0
+  linux:
+    version: 0.0.0
