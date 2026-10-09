@@ -55,8 +55,11 @@ def package_version(command)
   output = Facter::Util::Resolution.exec(command)
   return nil unless $CHILD_STATUS.success? && output
 
-  version = output.strip.split(' ')[1]
-  version
+  output.each_line do |line|
+    _name, version = line.split
+    return version if version
+  end
+  nil
 end
 
 Facter.add('package_versions') do
