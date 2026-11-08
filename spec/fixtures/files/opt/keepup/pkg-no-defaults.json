@@ -10,9 +10,11 @@
     "postgresql": "",
     "elasticsearch": "",
     "php": "",
+    "gitlab-runner": "",
     "linux": "",
     "host_ip": "",
     "data_center": "",
-    "team": ""
+    "team": "",
+    "environment": ""
   }
 }

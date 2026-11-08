@@ -25,6 +25,11 @@ class keepup::config {
       fail('info::data_center is a mandatory hash member')
     }
 
+    # keepup rejects any other value with 400; empty/absent means 'prod'
+    if $data['environment'] and !($data['environment'] in ['prod', 'non-prod', '']) {
+      fail("info::environment must be 'prod' or 'non-prod', got '${data['environment']}'")
+    }
+
     file { '/opt/keepup':
       ensure => 'directory',
       owner  => 'root',

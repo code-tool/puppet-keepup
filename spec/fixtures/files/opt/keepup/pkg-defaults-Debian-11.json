@@ -10,9 +10,11 @@
     "postgresql": "0.0.0",
     "elasticsearch": "0.0.0",
     "php": "0.0.0",
+    "gitlab-runner": "0.0.0",
     "linux": "0.0.0",
     "host_ip": "foo",
     "data_center": "unknown",
-    "team": "unknown"
+    "team": "unknown",
+    "environment": "prod"
   }
 }

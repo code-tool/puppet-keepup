@@ -1,5 +1,4 @@
-# This file can be used to install module dependencies for unit testing
-# See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures for details
+# Module dependencies for unit tests, downloaded from the Forge into spec/fixtures/modules/ by VoxBox.
 ---
 fixtures:
   forge_modules:

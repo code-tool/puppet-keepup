@@ -13,9 +13,11 @@
     "postgresql": "<%= $data['postgresql'] %>",
     "elasticsearch": "<%= $data['elasticsearch'] %>",
     "php": "<%= $data['php'] %>",
+    "gitlab-runner": "<%= $data['gitlab-runner'] %>",
     "linux": "<%= $data['linux'] %>",
     "host_ip": "<%= $data['host_ip'] %>",
     "data_center": "<%= $data['data_center'] %>",
-    "team": "<%= $data['team'] %>"
+    "team": "<%= $data['team'] %>",
+    "environment": "<%= $data['environment'] %>"
   }
 }

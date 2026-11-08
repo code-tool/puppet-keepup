@@ -24,6 +24,8 @@ class keepup::params {
     'host_ip'          => $facts['networking']['hostname'],
     'data_center'      => 'unknown',
     'team'             => 'unknown',
+    # 'prod' or 'non-prod'
+    'environment'      => 'prod',
   }
 
   $package_defaults = {
@@ -37,6 +39,7 @@ class keepup::params {
     'postgresql'       => $facts['package_versions']['postgresql']['version'],
     'elasticsearch'    => $facts['package_versions']['elasticsearch']['version'],
     'php'              => $facts['package_versions']['php']['version'],
+    'gitlab-runner'    => $facts['package_versions']['gitlab-runner']['version'],
     'linux'            => $facts['package_versions']['linux']['version'],
   }
 
