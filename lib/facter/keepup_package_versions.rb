@@ -40,6 +40,10 @@ packages = {
     host_package: 'php',
     host_version_command: "php --version 2>/dev/null | head -n 1 | cut -d ' ' -f2 | sed 's/^/php /' || true",
   },
+  'gitlab-runner' => {
+    host_package: 'gitlab-runner',
+    host_version_command: "gitlab-runner --version 2>/dev/null | head -n1 | cut -d ':' -f2 | tr -d ' ' | sed 's/^/gitlab-runner /'",
+  },
   'linux' => {
     host_package: 'linux-image-amd64',
     always_check: true,

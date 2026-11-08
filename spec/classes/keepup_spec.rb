@@ -121,6 +121,30 @@ describe 'keepup' do
         }
       end
 
+      context 'with info.environment=non-prod' do
+        let(:params) do
+          super().merge(
+            info: { 'environment' => 'non-prod' },
+          )
+        end
+
+        it { is_expected.to compile.with_all_deps }
+
+        it {
+          is_expected.to contain_file('/opt/keepup/pkg.json').with_content(%r{"environment": "non-prod"})
+        }
+      end
+
+      context 'with invalid info.environment' do
+        let(:params) do
+          super().merge(
+            info: { 'environment' => 'staging' },
+          )
+        end
+
+        it { is_expected.to compile.and_raise_error(%r{info::environment must be 'prod' or 'non-prod'}) }
+      end
+
       context 'with systemd_timer=true' do
         let(:params) do
           super().merge(

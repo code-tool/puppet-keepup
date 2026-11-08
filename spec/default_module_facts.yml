@@ -1,13 +1,5 @@
-# Use default_module_facts.yml for module specific facts.
-#
-# Facts specified here will override the values provided by rspec-puppet-facts.
 ---
-networking:
-  ip: "172.16.254.254"
-  ip6: "FE80:0000:0000:0000:AAAA:AAAA:AAAA"
-  mac: "AA:AA:AA:AA:AA:AA"
-is_pe: false
-
+# Module-specific facts, added on top of facterdb facts (voxpupuli-test spec_helper).
 keepup_random_minute: 30
 package_versions:
   mongodb:
@@ -27,6 +19,8 @@ package_versions:
   elasticsearch:
     version: 0.0.0
   php:
+    version: 0.0.0
+  gitlab-runner:
     version: 0.0.0
   linux:
     version: 0.0.0
