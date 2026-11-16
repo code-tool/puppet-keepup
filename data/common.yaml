@@ -1,1 +1,6 @@
---- {}
+---
+
+lookup_options:
+  keepup::info:
+    merge:
+      strategy: deep
