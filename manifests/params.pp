@@ -40,6 +40,7 @@ class keepup::params {
     'elasticsearch'    => $facts['package_versions']['elasticsearch']['version'],
     'php'              => $facts['package_versions']['php']['version'],
     'gitlab-runner'    => $facts['package_versions']['gitlab-runner']['version'],
+    'nginx'            => $facts['package_versions']['nginx']['version'],
     'linux'            => $facts['package_versions']['linux']['version'],
   }
 

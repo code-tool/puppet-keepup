@@ -1,0 +1,14 @@
+---
+# Environment-level Hiera used by spec/classes/keepup_spec.rb
+# to check that keepup::info is merged across hierarchy levels.
+version: 5
+
+defaults:
+  datadir: data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: 'nodes'
+    path: 'nodes/%{trusted.certname}.yaml'
+  - name: 'common'
+    path: 'common.yaml'
