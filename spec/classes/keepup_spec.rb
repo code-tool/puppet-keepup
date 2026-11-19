@@ -145,6 +145,34 @@ describe 'keepup' do
         it { is_expected.to compile.and_raise_error(%r{info::environment must be 'prod' or 'non-prod'}) }
       end
 
+      context 'with keepup::info split across Hiera levels' do
+        let(:node) { 'merge.example.com' }
+        let(:hiera_config) { 'spec/fixtures/hiera/hiera.yaml' }
+
+        it { is_expected.to compile.with_all_deps }
+
+        it 'deep merges keepup::info from all levels' do
+          is_expected.to contain_file('/opt/keepup/pkg.json').
+            with_content(%r{"data_center": "dc-common"}).
+            with_content(%r{"team": "team-node"}).
+            with_content(%r{"environment": "non-prod"}).
+            with_content(%r{"host_ip": "10\.0\.0\.15"})
+        end
+
+        context 'when the environment overrides lookup_options with merge: first' do
+          let(:hiera_config) { 'spec/fixtures/hiera/hiera-merge-first.yaml' }
+
+          it { is_expected.to compile.with_all_deps }
+
+          it 'uses only the highest-priority keepup::info' do
+            is_expected.to contain_file('/opt/keepup/pkg.json').
+              with_content(%r{"data_center": "unknown"}).
+              with_content(%r{"team": "team-node"}).
+              with_content(%r{"host_ip": "10\.0\.0\.15"})
+          end
+        end
+      end
+
       context 'with systemd_timer=true' do
         let(:params) do
           super().merge(

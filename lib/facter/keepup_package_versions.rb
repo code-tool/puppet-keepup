@@ -44,6 +44,10 @@ packages = {
     host_package: 'gitlab-runner',
     host_version_command: "gitlab-runner --version 2>/dev/null | head -n1 | cut -d ':' -f2 | tr -d ' ' | sed 's/^/gitlab-runner /'",
   },
+  'nginx' => {
+    host_package: 'nginx: master',
+    host_version_command: "nginx -v 2>&1 | grep -o 'nginx version: [^ ]*' | cut -d '/' -f2 | sed 's/^/nginx /' || true",
+  },
   'linux' => {
     host_package: 'linux-image-amd64',
     always_check: true,

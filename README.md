@@ -17,6 +17,41 @@ keepup::info:
   # host_ip: => $facts['networking']['hostname']
 ```
 
+### Hiera merge of `keepup::info`
+
+The module sets `lookup_options` for `keepup::info` with the `deep` merge strategy,
+so the hash is merged across all levels of your Hiera hierarchy instead of
+the first match winning. Common values can live at a lower level, and nodes override
+only what differs:
+
+```yaml
+# common.yaml
+keepup::info:
+  data_center: 'dc-01'
+  team: 'platform'
+
+# nodes/db-01.example.com.yaml
+keepup::info:
+  environment: 'non-prod'
+  host_ip: '10.0.0.15'
+
+# resulting keepup::info for db-01:
+#   data_center: 'dc-01'
+#   team: 'platform'
+#   environment: 'non-prod'
+#   host_ip: '10.0.0.15'
+```
+
+Keys from lower levels can no longer be dropped just by omitting them at a higher level.
+To remove one, override its value, or override the merge behavior in your
+environment's Hiera data:
+
+```yaml
+lookup_options:
+  keepup::info:
+    merge: first
+```
+
 ## Testing
 
 Unit tests (rspec-puppet) run in the [VoxBox](https://github.com/voxpupuli/container-voxbox) container, so no Ruby, Puppet or gems are needed on the host. Run from the module root:

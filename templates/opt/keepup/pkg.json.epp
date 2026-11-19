@@ -14,6 +14,7 @@
     "elasticsearch": "<%= $data['elasticsearch'] %>",
     "php": "<%= $data['php'] %>",
     "gitlab-runner": "<%= $data['gitlab-runner'] %>",
+    "nginx": "<%= $data['nginx'] %>",
     "linux": "<%= $data['linux'] %>",
     "host_ip": "<%= $data['host_ip'] %>",
     "data_center": "<%= $data['data_center'] %>",

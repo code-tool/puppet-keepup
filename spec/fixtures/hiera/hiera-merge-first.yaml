@@ -1,0 +1,16 @@
+---
+# Same as hiera.yaml, plus a level that overrides the module's
+# lookup_options for keepup::info back to first-found.
+version: 5
+
+defaults:
+  datadir: data
+  data_hash: yaml_data
+
+hierarchy:
+  - name: 'override lookup_options'
+    path: 'merge-first.yaml'
+  - name: 'nodes'
+    path: 'nodes/%{trusted.certname}.yaml'
+  - name: 'common'
+    path: 'common.yaml'

@@ -1,0 +1,5 @@
+---
+keepup::info:
+  team: 'team-node'
+  environment: 'non-prod'
+  host_ip: '10.0.0.15'
